@@ -1,10 +1,11 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from .models import Teams, Players, PlayerModality, Match, TeamMatchInfo, Penalties, Rewards, Assistances
 
 # Create your views here.
 
 def index(request):
-    pass
+    return redirect('/futsal/games/')
 
 def game(request, id):
     # Jogo Masculido de Futsal que está Acontecendo
