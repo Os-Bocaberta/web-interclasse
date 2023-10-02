@@ -1,0 +1,145 @@
+.hero__container {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.hero__playing__teams {
+    display: flex;
+    padding: 1rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__versus_x {
+    justify-self: center;
+    font-size: 1.75rem;
+    padding: 0 1rem;
+    color: #58595A;
+}
+
+/* Score */
+
+.score__container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.score__team__logo {
+    width: 6rem;
+    height: auto;
+    padding: 0 .75rem;
+}
+
+.score__separator {
+    font-size: 1.75rem;
+    padding: 0 1rem;
+    color: #58595A;
+    align-self: center;
+}
+
+.hero__details__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.match__time {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    margin: -.5rem 0 0 0;
+}
+
+.score__center__image {
+    width: 85%;
+    height: auto;
+    padding: 1rem;
+}
+
+/* Info Area */
+
+.info__container {
+    width: 100%;
+    padding: .5rem 0;
+    background-color: #181818;
+}
+
+.info__zone__container {
+    margin: .75rem;
+    background-color: #1E1F21;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info__zone {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info__zone__divider {
+    width: 95%;
+    height: 3px;
+    background-color: #181818;
+    border-radius: 64px;
+    align-self: center;
+}
+
+.team__info {
+    padding: .75rem 1rem .5rem 1rem;
+    width: 50%;
+}
+
+.team__b__info {
+    text-align: right;
+}
+
+.player__score {
+    display: flex;
+    gap: .25rem;
+    align-items: center;
+    padding: .25rem;
+}
+
+.player__score__b {
+    justify-content: right;
+}
+
+.player__score__more {
+    text-align: center;
+}
+
+.info__zone__stats__container {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    width: 100%;
+}
+
+.info__zone__stats__divider {
+    width: 80%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 64px;
+}
+
+.info__zone__stats__container__b {
+    flex-direction: row-reverse;
+}
+
+.info__zone__stats__divider__red {
+    background-color: #FF0000;
+}
+
+.info__zone__stats__divider__yellow {
+    background-color: #FAFF00;
+}
+
+.info__player__image {
+    width: 40px;
+    height: auto;
+}

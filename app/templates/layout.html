@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    {% block header %}{% endblock header %}
+</head>
+<body>
+    <div id="navbar-container" class="navbar__container">
+        <div class="navbar__closed__container">
+            <img class="navbar__logo" src="{% static 'images/jiifs_logo.png' %}" alt="jiifs-logo"></img>
+            <div id="navbar-toggle" class="navbar__toggle">
+                <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.3009 0H1.69912C0.76072 0 0 0.716344 0 1.6V2.4C0 3.28366 0.76072 4 1.69912 4H22.3009C23.2393 4 24 3.28366 24 2.4V1.6C24 0.716344 23.2393 0 22.3009 0Z" fill="white"/>
+                    <path d="M22.3009 16.3137H1.69912C0.76072 16.3137 0 17.0301 0 17.9137V18.7137C0 19.5974 0.76072 20.3137 1.69912 20.3137H22.3009C23.2393 20.3137 24 19.5974 24 18.7137V17.9137C24 17.0301 23.2393 16.3137 22.3009 16.3137Z" fill="white"/>
+                    <path d="M22.3009 8.15686H1.69912C0.76072 8.15686 0 8.8732 0 9.75686V10.5569C0 11.4405 0.76072 12.1569 1.69912 12.1569H22.3009C23.2393 12.1569 24 11.4405 24 10.5569V9.75686C24 8.8732 23.2393 8.15686 22.3009 8.15686Z" fill="white"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="navbar__content__container">
+            <ul class="navbar_content_options">
+                <a class="navbar__anchor" href="/futsal/games/">
+                    <li class="navbar_content_option">Futsal</li>
+                </a>
+                <a class="navbar__anchor" href="/volleyball/games/">
+                    <li class="navbar_content_option">Vôlei</li>
+                </a>
+            </ul>
+            <hr>
+            <div class="navbar__apoio">
+                <h2>Apoio</h2>
+                <div class="navbar__coirc__logos">
+                    <img class="navbar__morea__logo" src="{% static 'images/morea-logo.png' %}" alt="morea-logo"></img>
+                    <img class="navbar__coirc__logo" src="{% static 'images/coirc-logo.png' %}" alt="coirc-logo"></img>
+                </div>
+            </div>
+            <div class="info__zone__divider"></div>
+            <div class="navbar__dev__container">
+                <h2>Desenvolvedores</h2>
+                <div class="navbar__dev__child">
+                    <a class="navbar__dev__anchor" target="_blank" href="https://instagram.com/felipscarvalho?igshid=MzMyNGUyNmU2YQ==">
+                        <div class="navbar__developer">
+                            <img class="navbar__developer__photo" src="{% static 'images/felipe.jpg' %}" alt="dev-photo"></img>
+                            <p>Felipe Carvalho</p>
+                        </div>
+                    </a>
+                    <a class="navbar__dev__anchor" target="_blank" href="https://www.instagram.com/thevinisouza/">
+                        <div class="navbar__developer">
+                            <img class="navbar__developer__photo" src="{% static 'images/vinicius.jpg' %}" alt="dev-photo"></img>
+                            <p>Vinícius Souza</p>
+                        </div>
+                    </a>
+                    <a class="navbar__dev__anchor" target="_blank" href="https://instagram.com/karolsthefanny_?igshid=MWZjMTM2ODFkZg==">
+                        <div class="navbar__developer">
+                            <img class="navbar__developer__photo" src="{% static 'images/karol.jpg' %}" alt="dev-photo"></img>
+                            <p>Karol Sthefanny</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <hr>
+        </div>
+            
+    </div>
+    <div class="layout__child__content">
+        {% block content %}{% endblock content %}
+    </div>
+    <script src="{% static 'js/layout.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+db.sqlite3
+app/__pycache__
+interclass/__pycache__
+media/players/*
+media/teams/*
+app/migrations/__pycache__

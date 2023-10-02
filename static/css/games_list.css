@@ -1,0 +1,140 @@
+.games__list__container {
+    padding: 1rem;
+}
+
+.game__block__anchor {
+    text-decoration: none;
+    color: #fff;
+}
+
+.game__block__ongoing {
+    position: relative;
+    background-color: #181818;
+    border-radius: 16px;
+    padding: 1rem 1rem .5rem 1rem;
+    margin: 1rem 0;
+    transition: .5s ease;
+}
+
+.game__block__ongoing::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 16px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/static/images/ongoing_game.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: grayscale(100%);
+    transition: .5s ease;
+}
+
+.game__block__ongoing:hover::before {
+    transition: .5s ease;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/images/ongoing_game.webp");
+}
+
+.game__block__soon {
+    position: relative;
+    background-color: #181818;
+    border-radius: 16px;
+    padding: 1rem 1rem .5rem 1rem;
+    margin: 1rem 0;
+    transition: .5s ease;
+}
+
+.game__block__soon::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 16px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/static/images/game_soon.jpg");
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    transition: .5s ease;
+}
+
+.game__block__soon:hover::before {
+    transition: .5s ease;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/images/game_soon.jpg");
+}
+
+.game__block__past {
+    position: relative;
+    background-color: #181818;
+    border-radius: 16px;
+    padding: 1rem 1rem .5rem 1rem;
+    margin: 1rem 0;
+    transition: .5s ease;
+}
+
+.game__block__past::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 16px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/static/images/past_game.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: grayscale(100%);
+    transition: .5s ease;
+}
+
+.game__block__past:hover::before {
+    transition: .5s ease;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/images/past_game.jpg");
+}
+
+
+.game__score {
+    position: relative;
+}
+
+.games__list__header__container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hero__playing__teams {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__versus_x {
+    justify-self: center;
+    font-size: 1.75rem;
+    padding: 0 1rem;
+    color: #58595A;
+}
+
+.score__container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.score__team__logo {
+    width: 6rem;
+    height: auto;
+    padding: 0 .75rem;
+}
+
+.score__separator {
+    font-size: 1.75rem;
+    padding: 0 1rem;
+    color: #58595A;
+    align-self: center;
+}
+
+.live__dot {
+    width: .75rem;
+    height: .75rem;
+    background-color: #ff0000;
+    border-radius: 16px;
+}

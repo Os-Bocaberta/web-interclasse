@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #fff;
+    background-color: #1E1F21;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar__container {
+    width: 100%;
+    max-height: 64px;
+    position: fixed;
+    background-color: #181818;
+    overflow: hidden;
+    transition: .5s ease;
+    z-index: 999;
+}
+
+.navbar__closed__container {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.navbar__logo {
+    height: 80%;
+    width: auto;
+}
+
+.navbar__toggle {
+    display: block;
+    cursor: pointer;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Content */
+
+
+.navbar__content__container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.navbar_content_options {
+    list-style: none;
+}
+
+.navbar_content_option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 100%;
+}
+
+.navbar_content_option:hover {
+    cursor: pointer;
+    background-color: #131313;
+}
+
+.navbar_content_option:active {
+    cursor: pointer;
+    background-color: #0e0e0e;
+}
+
+/* Child Content */
+
+.layout__child__content {
+    padding-top: 64px;
+}
+
+.navbar__anchor {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar__coirc__logos {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar__morea__logo {
+    width: 112px;
+    height: auto;
+}
+
+.navbar__coirc__logo {
+    width: 56px;
+    height: auto;
+}
+
+.info__zone__divider {
+    width: 95%;
+    height: 3px;
+    background-color: #1E1F21;
+    border-radius: 64px;
+    align-self: center;
+}
+
+.navbar__dev__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1.25rem;
+}
+
+.navbar__dev__anchor {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar__developer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+}
+
+.navbar__developer__photo {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 4096px;
+}
+
+.navbar__apoio {
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar__dev__child {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}

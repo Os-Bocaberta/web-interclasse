@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/games_list.css' %}">
+<Title>Jogos | Futsal</Title>
+<link rel="icon" type="image/x-icon" href="{% static '/images/jiifs_logo.ico' %}">
+{% endblock header %}
+
+{% block content %}
+<div class="games__list__container">
+    {% if match_info %}
+    <div class="games__list__header__container"><h1 class="games__list__header">Ao Vivo</h1><div class="live__dot"></div></div>
+    <a class="game__block__anchor" href="/game/{{match_info.id}}">
+        <div class="game__block__ongoing">
+            <div class="game__score">
+                <div class="hero__playing__teams">
+                    <h1>{{ team_A.team.name }}</h1>
+                    <h1 class="hero__versus_x">X</h1>
+                    <h1>{{ team_B.team.name }}</h1>
+                </div>
+                <div class="score__container">
+                    <img class="score__team__logo" src="{% get_media_prefix %}{{ team_A.team.logo }}" alt="team-A-logo"></img>
+                    <h1 id="team-a-score">{{team_a_score}}</h1>
+                    <h1 class="score__separator">:</h1>
+                    <h1 id="team-b-score">{{team_b_score}}</h1>
+                    <img class="score__team__logo" src="{% get_media_prefix %}{{ team_B.team.logo }}" alt="team-B-logo"></img>
+                </div>
+            </div>
+        </div>
+    </a>
+    {% endif %}
+    {% if next_matchs %}
+    <div class="games__list__header__container"><h1 class="games__list__header">Próximos Jogos</h1></div>
+        {% for match in next_matchs reversed %}
+            <div class="game__block__soon">
+                <div class="game__score">
+                    <div class="hero__playing__teams">
+                        <h1>{{ match.1.0.team.name }}</h1>
+                        <h1 class="hero__versus_x">X</h1>
+                        <h1>{{ match.1.1.team.name }}</h1>
+                    </div>
+                    <div class="score__container">
+                        <img class="score__team__logo" src="{% get_media_prefix %}{{ match.1.0.team.logo }}" alt="team-A-logo"></img>
+                        <h1 id="team-a-score">{{match.2}}</h1>
+                        <h1 class="score__separator">:</h1>
+                        <h1 id="team-b-score">{{match.3}}</h1>
+                        <img class="score__team__logo" src="{% get_media_prefix %}{{ match.1.1.team.logo }}" alt="team-B-logo"></img>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% if past_matchs %}
+    <div class="games__list__header__container"><h1 class="games__list__header">Jogos Anteriores</h1></div>
+        {% for match in past_matchs reversed %}
+            <a class="game__block__anchor" href="/game/{{match.0.id}}">
+                <div class="game__block__past">
+                    <div class="game__score">
+                        <div class="hero__playing__teams">
+                            <h1>{{ match.1.0.team.name }}</h1>
+                            <h1 class="hero__versus_x">X</h1>
+                            <h1>{{ match.1.1.team.name }}</h1>
+                        </div>
+                        <div class="score__container">
+                            <img class="score__team__logo" src="{% get_media_prefix %}{{ match.1.0.team.logo }}" alt="team-A-logo"></img>
+                            <h1 id="team-a-score">{{match.2}}</h1>
+                            <h1 class="score__separator">:</h1>
+                            <h1 id="team-b-score">{{match.3}}</h1>
+                            <img class="score__team__logo" src="{% get_media_prefix %}{{ match.1.1.team.logo }}" alt="team-B-logo"></img>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock content %}
