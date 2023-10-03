@@ -14,7 +14,7 @@ let match_time = document.querySelector('#match-time')
 const socket = new WebSocket(`ws://${window.location.host}/ws/football/`)
 
 socket.onmessage = function(e) {
-    console.log('Server:' + e.data)
+    //console.log('Server:' + e.data)
     server_data = JSON.parse(e.data)
     
     team_a_score.innerHTML = server_data.team_a_score

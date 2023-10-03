@@ -64,11 +64,15 @@ class DashboardConsumer(JsonWebsocketConsumer):
                 team_a_errors = Penalties.objects.all().filter(team_match=team_match_info[0].id).filter(type=4).count()
                 team_b_errors = Penalties.objects.all().filter(team_match=team_match_info[1].id).filter(type=4).count()
 
-                nowtime = datetime.now(timezone.utc) + timedelta(hours=2) + timedelta(minutes=1) + timedelta(seconds=28)
+                nowtime = datetime.now(timezone.utc) + timedelta(hours=2) + timedelta(minutes=1) + timedelta(seconds=28) - timedelta(seconds=525)
                 elapsedtime = nowtime - ongoing_match.start_time
+
+                print(nowtime, ongoing_match.start_time)
 
                 seconds = elapsedtime.seconds
                 minutes = (seconds//60)%60
+
+                print(minutes, seconds)
         
                 layer = channels.layers.get_channel_layer()
                 async_to_sync(layer.group_send)('ongoing_game', {
@@ -133,11 +137,15 @@ class DashboardConsumer(JsonWebsocketConsumer):
                 team_a_errors = Penalties.objects.all().filter(team_match=team_match_info[0].id).filter(type=4).count()
                 team_b_errors = Penalties.objects.all().filter(team_match=team_match_info[1].id).filter(type=4).count()
 
-                nowtime = datetime.now(timezone.utc) + timedelta(hours=2) + timedelta(minutes=1) + timedelta(seconds=28)
+                nowtime = datetime.now(timezone.utc) + timedelta(hours=2) + timedelta(minutes=1) + timedelta(seconds=28) - timedelta(seconds=525)
                 elapsedtime = nowtime - ongoing_match.start_time
+
+                print(nowtime, ongoing_match.start_time)
 
                 seconds = elapsedtime.seconds
                 minutes = (seconds//60)%60
+
+                print(minutes, seconds)
         
                 layer = channels.layers.get_channel_layer()
                 async_to_sync(layer.group_send)('ongoing_game', {
