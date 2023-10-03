@@ -64,7 +64,7 @@ class DashboardConsumer(JsonWebsocketConsumer):
                 team_a_errors = Penalties.objects.all().filter(team_match=team_match_info[0].id).filter(type=4).count()
                 team_b_errors = Penalties.objects.all().filter(team_match=team_match_info[1].id).filter(type=4).count()
 
-                nowtime = datetime.now(timezone.utc) + timedelta(hours=2) + timedelta(minutes=1) + timedelta(seconds=28) - timedelta(seconds=525)
+                nowtime = datetime.now(timezone.utc)
                 elapsedtime = nowtime - ongoing_match.start_time
 
                 print(nowtime, ongoing_match.start_time)
@@ -137,7 +137,7 @@ class DashboardConsumer(JsonWebsocketConsumer):
                 team_a_errors = Penalties.objects.all().filter(team_match=team_match_info[0].id).filter(type=4).count()
                 team_b_errors = Penalties.objects.all().filter(team_match=team_match_info[1].id).filter(type=4).count()
 
-                nowtime = datetime.now(timezone.utc) + timedelta(hours=2) + timedelta(minutes=1) + timedelta(seconds=28) - timedelta(seconds=525)
+                nowtime = datetime.now(timezone.utc)
                 elapsedtime = nowtime - ongoing_match.start_time
 
                 print(nowtime, ongoing_match.start_time)
