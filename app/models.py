@@ -58,7 +58,10 @@ class Players(models.Model):
     instagram = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        if (self.number):
+            return f"{self.number} | {self.name}"
+        else:
+            return self.name
 
 class PlayerModality(models.Model):
     modality = models.IntegerField(choices=Modality.choices, blank=True, null=True)
