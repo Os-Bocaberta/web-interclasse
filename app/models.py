@@ -71,7 +71,10 @@ class PlayerModality(models.Model):
     player = models.ForeignKey(Players, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.player.name
+        if self.player.number:
+            return f"{self.player.number} | {self.player.name} | {self.team.name}"
+        else:
+            return self.player.name
     
 class Match(models.Model):
     modality = models.IntegerField(choices=Modality.choices)
