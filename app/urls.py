@@ -22,6 +22,8 @@ app_name = 'app'
 urlpatterns = [
     path("", views.index),
     path("game/<int:id>/", views.game),
-    path("volleyball/games/", views.list_volleyball),
     path("futsal/games/", views.list_futsal),
+    path("volleyball/games/", views.list_volleyball),
+    path("futsal/dashboard/", views.futsal_dashboard),
+    path("volleyball/dashboard/", views.volleyball_dashboard),
 ]

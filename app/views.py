@@ -8,6 +8,7 @@ def index(request):
     return redirect('/futsal/games/')
 
 def game(request, id):
+    print(request.get_full_path())
     # Jogo Masculido de Futsal que está Acontecendo
     if (Match.objects.all().filter(id=id).filter(status=1).filter(sex=0).filter(modality=0)):
         ongoing_match = Match.objects.get(id=id)
@@ -147,7 +148,18 @@ def game(request, id):
         team_b_errors = Penalties.objects.all().filter(team_match=team_match_info[1].id).filter(type=4).count()
 
         return render(request, 'volleyball_finished_game.html', {'match_info': ongoing_match,'team_A': team_match_info[0], 'team_B': team_match_info[1], 'team_a_players': team_a_players, 'team_b_players': team_b_players, 'team_a_score': team_a_score, 'team_b_score': team_b_score, 'team_a_score_players': team_a_score_players, 'team_b_score_players': team_b_score_players, 'team_a_blocks': team_a_blocks, 'team_b_blocks': team_b_blocks, 'team_a_errors': team_a_errors, 'team_b_errors': team_b_errors, 'team_a_fauls': team_a_fauls, 'team_b_fauls': team_b_fauls})
-    
+
+def futsal_dashboard(request):
+    ongoing_match = Match.objects.get(status=1)
+    team_match_info = TeamMatchInfo.objects.all().filter(match=ongoing_match.id).select_related('team')
+
+    return render(request, 'futsal_dashboard.html', {'match_info': ongoing_match,'team_A': team_match_info[0], 'team_B': team_match_info[1]})
+
+def volleyball_dashboard(request):
+    ongoing_match = Match.objects.get(status=1)
+    team_match_info = TeamMatchInfo.objects.all().filter(match=ongoing_match.id).select_related('team')
+
+    return render(request, 'volleyball_dashboard.html', {'match_info': ongoing_match,'team_A': team_match_info[0], 'team_B': team_match_info[1]})
     
 def list_futsal(request):
     ongoing_match = Match.objects.all().filter(status=1).filter(modality=0)

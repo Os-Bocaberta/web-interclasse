@@ -9,6 +9,7 @@ let team_a_reds = document.querySelector('#team_a_reds')
 let team_b_reds = document.querySelector('#team_b_reds')
 let team_a_yellows = document.querySelector('#team_a_yellows')
 let team_b_yellows = document.querySelector('#team_b_yellows')
+let match_time = document.querySelector('#match-time')
 
 const socket = new WebSocket(`ws://${window.location.host}/ws/football/`)
 
@@ -27,6 +28,8 @@ socket.onmessage = function(e) {
 
     team_a_yellows.innerHTML = server_data.team_a_yellows
     team_b_yellows.innerHTML = server_data.team_b_yellows
+
+    match_time.innerHTML = `${server_data.minutes}'`
 
     players_team_a_scores.innerHTML = ""
     players_team_b_scores.innerHTML = ""

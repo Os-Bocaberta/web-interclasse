@@ -143,3 +143,9 @@
     width: 40px;
     height: auto;
 }
+
+.live__container {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}

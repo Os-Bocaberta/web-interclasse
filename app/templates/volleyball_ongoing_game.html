@@ -22,7 +22,9 @@
             <img class="score__team__logo" src="{% get_media_prefix %}{{ team_B.team.logo }}" alt="team-B-logo"></img>
         </div>
         <div class="hero__details__container">
-            <h1 class="match__time">0'</h1>
+            <div class="live__container">
+                <h1 id="match-time" class="match__time">0'</h1>
+            </div>
             <img class="score__center__image" src="{% static 'images/multi_sports_field.png' %}" alt="hero-field"></img>
         </div>
     </div>
@@ -30,7 +32,9 @@
         <div class="info__zone__container">
             <div class="info__zone">
                 <div class="team__a__info team__info">
-                    <h2>{{ team_A.team.name }}</h2>
+                    <div class="live__container">
+                        <h2>{{ team_A.team.name }}</h2>
+                    </div>
                     <div id="players-team-a-scores" class="player__score__container"></div>
                     <p class="player__score__more">...</p>
                 </div>
