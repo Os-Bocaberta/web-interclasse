@@ -11,7 +11,7 @@ let team_a_yellows = document.querySelector('#team_a_yellows')
 let team_b_yellows = document.querySelector('#team_b_yellows')
 let match_time = document.querySelector('#match-time')
 
-const socket = new WebSocket(`ws://${window.location.host}/ws/football/`)
+const socket = new WebSocket(`wss://${window.location.host}/ws/football/`)
 
 socket.onmessage = function(e) {
     //console.log('Server:' + e.data)
