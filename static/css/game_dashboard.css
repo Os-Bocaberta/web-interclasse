@@ -149,3 +149,18 @@
     gap: .5rem;
     align-items: center;
 }
+
+.mvp__player__container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+}
+
+.mvp__player__name {
+    font-size: 1.35rem;
+}
+
+.mvp__player__header {
+    font-size: 1.75rem;
+}

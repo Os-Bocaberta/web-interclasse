@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Teams, Players, PlayerModality, Match, TeamMatchInfo, Penalties, Rewards, Assistances
+from .models import Teams, Players, PlayerModality, Match, TeamMatchInfo, Penalties, Rewards, Assistances, Chaveamento
 
 # Register your models here.
 
@@ -35,3 +35,4 @@ admin.site.register(TeamMatchInfo, TeamMatchInfoAdmin)
 admin.site.register(Penalties, PenaltiesAdmin)
 admin.site.register(Rewards, RewardsAdmin)
 admin.site.register(Assistances, AssistancesAdmin)
+admin.site.register(Chaveamento)

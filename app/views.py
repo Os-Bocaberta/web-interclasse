@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .models import Teams, Players, PlayerModality, Match, TeamMatchInfo, Penalties, Rewards, Assistances
+from .models import Teams, Players, PlayerModality, Match, TeamMatchInfo, Penalties, Rewards, Assistances, Chaveamento
 
 # Create your views here.
 
@@ -161,6 +161,11 @@ def volleyball_dashboard(request):
 
     return render(request, 'volleyball_dashboard.html', {'match_info': ongoing_match,'team_A': team_match_info[0], 'team_B': team_match_info[1]})
     
+def games_review(request):
+    images = Chaveamento.objects.all()
+
+    return render(request, 'chaveamento.html', {"chaveamento": images})
+
 def list_futsal(request):
     ongoing_match = Match.objects.all().filter(status=1).filter(modality=0)
     if(ongoing_match):

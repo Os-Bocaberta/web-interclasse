@@ -114,3 +114,10 @@ class Assistances(models.Model):
 
     def __str__(self):
         return self.player.name
+    
+class Chaveamento(models.Model):
+    title = models.CharField(max_length=200, default='untitled')
+    image = models.ImageField(upload_to='chaveamento/', blank=True, null=True)
+
+    def __str__(self):
+        return self.title

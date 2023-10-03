@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block header %}
+
+{% endblock header %}
+
+{% block content %}
+{% for item in chaveamento %}
+    <div class="chaveamento__container">
+        <h1>{{item.title}} | Masculino</h1>
+        <div class="chaveament__image__container">
+            <img class="chaveamento__image" src="{% get_media_prefix %}{{ item.image }}" alt="chaveamento"></img>
+        </div>
+    </div>
+{% endfor %}
+{% endblock content %}

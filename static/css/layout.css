@@ -163,3 +163,46 @@ body {
     background-color: #ff0000;
     border-radius: 16px;
 }
+
+.chaveamento__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1rem .5rem;
+    gap: 1.25rem;
+}
+
+.chaveament__image__container {
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: 90%;
+}
+
+.chaveamento__image {
+    width: 1280px;
+    height: auto;
+}
+
+.chaveament__icon__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 256px;
+    width: fit-content;
+    height: fit-content;
+    background-color: #0d6afd;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+.chaveament__icon__container:hover {
+    background-color: #0e49a8;
+}
+
+.chaveamento__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+}
