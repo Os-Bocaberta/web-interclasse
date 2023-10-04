@@ -308,8 +308,8 @@ def volley_sets_review(request, id):
     if(ongoing_match):
         team_match_info = TeamMatchInfo.objects.all().filter(match=ongoing_match[0].id).select_related('team')
 
-        team_a_score = Rewards.objects.all().filter(team_match=team_match_info[0].id).count()
-        team_b_score = Rewards.objects.all().filter(team_match=team_match_info[1].id).count()
+        team_a_score = Rewards.objects.all().filter(team_match=team_match_info[0].id).count() + Penalties.objects.all().filter(team_match=team_match_info[1].id).count()
+        team_b_score = Rewards.objects.all().filter(team_match=team_match_info[1].id).count() + Penalties.objects.all().filter(team_match=team_match_info[0].id).count()
     else:
         ongoing_match = [""]
         team_match_info = ["", ""]
