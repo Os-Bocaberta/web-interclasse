@@ -248,6 +248,9 @@ def list_volleyball(request):
     if ongoing_volleyball_sets:
         ongoing_match = Match.objects.all().filter(modality=1).filter(volley_set=ongoing_volleyball_sets[0])
 
+        team_a_score = ongoing_volleyball_sets[0].team_a_points
+        team_b_score = ongoing_volleyball_sets[0].team_b_points
+
         if(ongoing_match):
             team_match_info = TeamMatchInfo.objects.all().filter(match=ongoing_match[0].id).select_related('team')
 
@@ -258,6 +261,8 @@ def list_volleyball(request):
         ongoing_volleyball_sets = ['']
         ongoing_match = [""]
         team_match_info = ["", ""]
+        team_a_score = ""
+        team_b_score = ""
 
     next_volleyball_sets = VolleySets.objects.all().filter(status=0)
 
@@ -296,7 +301,7 @@ def list_volleyball(request):
     print(past_matchs_data)
     print(ongoing_match)
 
-    return render(request, 'games_list_volley.html', {'match_id': ongoing_volleyball_sets[0],'match_info': ongoing_match[0], 'team_A': team_match_info[0], 'team_B': team_match_info[1], 'team_a_score': ongoing_volleyball_sets[0].team_a_points, 'team_b_score': ongoing_volleyball_sets[0].team_b_points, "next_matchs": next_matchs_data, "past_matchs": past_matchs_data})
+    return render(request, 'games_list_volley.html', {'match_id': ongoing_volleyball_sets[0],'match_info': ongoing_match[0], 'team_A': team_match_info[0], 'team_B': team_match_info[1], 'team_a_score': team_a_score, 'team_b_score': team_b_score, "next_matchs": next_matchs_data, "past_matchs": past_matchs_data})
 
 def volley_sets_review(request, id):
     ongoing_match = Match.objects.all().filter(status=1).filter(modality=1).filter(volley_set=id)
