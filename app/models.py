@@ -76,12 +76,18 @@ class PlayerModality(models.Model):
         else:
             return self.player.name
     
+class VolleySets(models.Model):
+    status = models.IntegerField(choices=Status.choices, default=0)
+    team_a_points = models.IntegerField(default=0)
+    team_b_points = models.IntegerField(default=0)
+
 class Match(models.Model):
     modality = models.IntegerField(choices=Modality.choices)
     status = models.IntegerField(choices=Status.choices)
     start_time = models.DateTimeField(editable=True)
     mvp_player = models.ForeignKey(Players, on_delete=models.CASCADE, blank=True, null=True)
     sex = models.IntegerField(choices=Sex.choices, blank=True, null=True)
+    volley_set = models.ForeignKey(VolleySets, on_delete=models.CASCADE, blank=True, null=True)
     winner = models.ForeignKey(Teams, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):

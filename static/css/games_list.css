@@ -148,3 +148,10 @@
     top: .5rem;
     left: .5rem;
 }
+
+.mvp__player__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

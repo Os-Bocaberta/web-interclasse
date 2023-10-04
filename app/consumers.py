@@ -39,9 +39,13 @@ class DashboardConsumer(JsonWebsocketConsumer):
 
             if(TeamMatchInfo.objects.all().filter(match=ongoing_match.id).select_related('team').count() == 2):
                 team_match_info = TeamMatchInfo.objects.all().filter(match=ongoing_match.id).select_related('team')
-        
-                team_a_score = Rewards.objects.all().filter(team_match=team_match_info[0].id).count()
-                team_b_score = Rewards.objects.all().filter(team_match=team_match_info[1].id).count()
+
+                if(ongoing_match.modality == 0):
+                    team_a_score = Rewards.objects.all().filter(team_match=team_match_info[0].id).count()
+                    team_b_score = Rewards.objects.all().filter(team_match=team_match_info[1].id).count()
+                elif(ongoing_match.modality == 1):
+                    team_a_score = Rewards.objects.all().filter(team_match=team_match_info[0].id).count() + Penalties.objects.all().filter(team_match=team_match_info[1].id).count()
+                    team_b_score = Rewards.objects.all().filter(team_match=team_match_info[1].id).count() + Penalties.objects.all().filter(team_match=team_match_info[0].id).count()
         
                 team_a_score_players = Rewards.objects.all().filter(team_match=team_match_info[0].id).order_by('-id' )[:3]
                 team_b_score_players = Rewards.objects.all().filter(team_match=team_match_info[1].id).order_by('-id' )[:3]
@@ -112,9 +116,13 @@ class DashboardConsumer(JsonWebsocketConsumer):
 
             if(TeamMatchInfo.objects.all().filter(match=ongoing_match.id).select_related('team').count() == 2):
                 team_match_info = TeamMatchInfo.objects.all().filter(match=ongoing_match.id).select_related('team')
-        
-                team_a_score = Rewards.objects.all().filter(team_match=team_match_info[0].id).count()
-                team_b_score = Rewards.objects.all().filter(team_match=team_match_info[1].id).count()
+
+                if(ongoing_match.modality == 0):
+                    team_a_score = Rewards.objects.all().filter(team_match=team_match_info[0].id).count()
+                    team_b_score = Rewards.objects.all().filter(team_match=team_match_info[1].id).count()
+                elif(ongoing_match.modality == 1):
+                    team_a_score = Rewards.objects.all().filter(team_match=team_match_info[0].id).count() + Penalties.objects.all().filter(team_match=team_match_info[1].id).count()
+                    team_b_score = Rewards.objects.all().filter(team_match=team_match_info[1].id).count() + Penalties.objects.all().filter(team_match=team_match_info[0].id).count()
         
                 team_a_score_players = Rewards.objects.all().filter(team_match=team_match_info[0].id).order_by('-id' )[:3]
                 team_b_score_players = Rewards.objects.all().filter(team_match=team_match_info[1].id).order_by('-id' )[:3]

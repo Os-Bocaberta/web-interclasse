@@ -11,7 +11,7 @@
 <div class="games__list__container">
     {% if match_info %}
     <div class="games__list__header__container"><h1 class="games__list__header">Jogo ao Vivo</h1><div class="live__dot"></div></div>
-    <a class="game__block__anchor" href="/game/{{match_id.id}}">
+    <a class="game__block__anchor" href="/volleySets/{{match_id.id}}">
         <div class="game__block__ongoing">
             {% if match_info.sex == 0 %}
             <div class="game__block__sex">
@@ -74,9 +74,9 @@
                     </div>
                     <div class="score__container">
                         <img class="score__team__logo" src="{% get_media_prefix %}{{ match.1.0.team.logo }}" alt="team-A-logo"></img>
-                        <h1 id="team-a-score">{{match.2}}</h1>
+                        <h1 id="team-a-score">{{match.4.team_a_points}}</h1>
                         <h1 class="score__separator">:</h1>
-                        <h1 id="team-b-score">{{match.3}}</h1>
+                        <h1 id="team-b-score">{{match.4.team_b_points}}</h1>
                         <img class="score__team__logo" src="{% get_media_prefix %}{{ match.1.1.team.logo }}" alt="team-B-logo"></img>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
     {% if past_matchs %}
     <div class="games__list__header__container"><h1 class="games__list__header">Jogos Anteriores</h1></div>
         {% for match in past_matchs reversed %}
-            <a class="game__block__anchor" href="/game/{{match.0.id}}">
+            <a class="game__block__anchor" href="/volleySets/{{match.4.id}}">
                 <div class="game__block__past">
                     {% if match.0.sex == 0 %}
                         <div class="game__block__sex">
@@ -112,9 +112,9 @@
                         </div>
                         <div class="score__container">
                             <img class="score__team__logo" src="{% get_media_prefix %}{{ match.1.0.team.logo }}" alt="team-A-logo"></img>
-                            <h1 id="team-a-score">{{match.2}}</h1>
+                            <h1 id="team-a-score">{{match.4.team_a_points}}</h1>
                             <h1 class="score__separator">:</h1>
-                            <h1 id="team-b-score">{{match.3}}</h1>
+                            <h1 id="team-b-score">{{match.4.team_b_points}}</h1>
                             <img class="score__team__logo" src="{% get_media_prefix %}{{ match.1.1.team.logo }}" alt="team-B-logo"></img>
                         </div>
                     </div>

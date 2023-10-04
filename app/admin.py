@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Teams, Players, PlayerModality, Match, TeamMatchInfo, Penalties, Rewards, Assistances, Chaveamento
+from .models import Teams, Players, PlayerModality, VolleySets, Match, TeamMatchInfo, Penalties, Rewards, Assistances, Chaveamento
 
 # Register your models here.
 
@@ -11,6 +11,9 @@ class PlayersAdmin(admin.ModelAdmin):
 
 class PlayerModalityAdmin(admin.ModelAdmin):
     list_display = ['id', 'modality', 'activity', 'team', 'player']
+
+class VolleySetsAdmin(admin.ModelAdmin):
+    list_display = ['id', 'team_a_points', 'team_b_points']
 
 class MatchAdmin(admin.ModelAdmin):
     list_display = ['id', 'modality', 'status', 'start_time', 'winner']
@@ -30,6 +33,7 @@ class AssistancesAdmin(admin.ModelAdmin):
 admin.site.register(Teams, TeamsAdmin)
 admin.site.register(Players, PlayersAdmin)
 admin.site.register(PlayerModality, PlayerModalityAdmin)
+admin.site.register(VolleySets, VolleySetsAdmin)
 admin.site.register(Match, MatchAdmin)
 admin.site.register(TeamMatchInfo, TeamMatchInfoAdmin)
 admin.site.register(Penalties, PenaltiesAdmin)
