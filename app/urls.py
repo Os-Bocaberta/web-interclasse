@@ -28,4 +28,5 @@ urlpatterns = [
     path("volleyball/dashboard/", views.volleyball_dashboard),
     path("games/review/", views.games_review),
     path("volleySets/<int:id>/", views.volley_sets_review),
+    path("alfredo_ama_o_pe_da_serra/", views.admin_page),
 ]

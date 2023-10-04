@@ -206,3 +206,18 @@ body {
     width: 2.5rem;
     height: 2.5rem;
 }
+
+.admin__form {
+    display: flex;
+    gap: 1rem;
+    padding: .5rem .5rem;
+}
+
+.admin__container {
+    padding: 1rem;
+}
+
+.admin__score {
+    display: flex;
+    gap: .5rem;
+}

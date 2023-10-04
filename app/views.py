@@ -340,3 +340,55 @@ def volley_sets_review(request, id):
         past_matchs_data.append(temp_match)
 
     return render(request, 'game_list_sets.html', {'match_info': ongoing_match[0],'team_A': team_match_info[0], 'team_B': team_match_info[1], 'team_a_score': team_a_score, 'team_b_score': team_b_score, "next_matchs": next_matchs_data, "past_matchs": past_matchs_data})
+
+def admin_page(request):
+    ongoing_match = Match.objects.get(status=1)
+    team_match_info = TeamMatchInfo.objects.all().filter(match=ongoing_match.id).select_related('team')
+
+    team_a_players = PlayerModality.objects.all().filter(team=team_match_info[0].team.id).filter(modality=ongoing_match.modality).select_related('player')
+    team_b_players = PlayerModality.objects.all().filter(team=team_match_info[1].team.id).filter(modality=ongoing_match.modality).select_related('player')
+
+    if request.method == 'POST':
+        if request.POST.get("team_a_add_goal_player"):
+            player_data = Players.objects.get(id=request.POST.get("team_a_add_goal_player"))
+            data = Rewards(type=0, player=player_data, team_match=team_match_info[0])
+            data.save()
+        if request.POST.get("team_a_add_point_player"):
+            player_data = Players.objects.get(id=request.POST.get("team_a_add_point_player"))
+            data = Rewards(type=1, player=player_data, team_match=team_match_info[0])
+            data.save()
+        if request.POST.get("team_a_add_faul_player"):
+            player_data = Players.objects.get(id=request.POST.get("team_a_add_faul_player"))
+            data = Penalties(type=0, player=player_data, team_match=team_match_info[0])
+            data.save()
+        if request.POST.get("team_a_add_block_player"):
+            player_data = Players.objects.get(id=request.POST.get("team_a_add_block_player"))
+            data = Penalties(type=3, player=player_data, team_match=team_match_info[0])
+            data.save()
+        if request.POST.get("team_a_add_erro_player"):
+            player_data = Players.objects.get(id=request.POST.get("team_a_add_erro_player"))
+            data = Penalties(type=4, player=player_data, team_match=team_match_info[0])
+            data.save()
+
+        if request.POST.get("team_b_add_goal_player"):
+            player_data = Players.objects.get(id=request.POST.get("team_b_add_goal_player"))
+            data = Rewards(type=0, player=player_data, team_match=team_match_info[1])
+            data.save()
+        if request.POST.get("team_b_add_point_player"):
+            player_data = Players.objects.get(id=request.POST.get("team_b_add_point_player"))
+            data = Rewards(type=1, player=player_data, team_match=team_match_info[1])
+            data.save()
+        if request.POST.get("team_b_add_faul_player"):
+            player_data = Players.objects.get(id=request.POST.get("team_b_add_faul_player"))
+            data = Penalties(type=0, player=player_data, team_match=team_match_info[1])
+            data.save()
+        if request.POST.get("team_b_add_block_player"):
+            player_data = Players.objects.get(id=request.POST.get("team_b_add_block_player"))
+            data = Penalties(type=3, player=player_data, team_match=team_match_info[1])
+            data.save()
+        if request.POST.get("team_b_add_erro_player"):
+            player_data = Players.objects.get(id=request.POST.get("team_b_add_erro_player"))
+            data = Penalties(type=4, player=player_data, team_match=team_match_info[1])
+            data.save()
+    
+    return render(request, 'admin_page.html', {'team_a_players': team_a_players, 'team_b_players': team_b_players, 'team_A': team_match_info[0], 'team_B': team_match_info[1]})

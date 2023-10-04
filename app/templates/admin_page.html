@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block header %}
+
+{% endblock header %}
+
+{% block content %}
+<div class="admin__container">
+    <div class="admin__score">
+        <p>{{team_A.team.name}} | </p>
+        <p id="team-a-score">0</p>
+        <p> x </p>
+        <p id="team-b-score">0</p>
+        <p> | {{team_B.team.name}}</p>
+    </div>
+
+    <h1>Time {{team_A.team.name}}</h1>
+    <h2>Recompensas</h2>
+    <form class="admin__form" method="post" id="team_a_add_goal">
+        {% csrf_token %}
+        <h2>Gol</h2>
+        <select name="team_a_add_goal_player" id="team_a_add_goal_player">
+            {% for player in team_a_players %}
+                <option value="{{player.player.id}}">{{player.player.number}} | {{player.player.name}}</option>
+            {% endfor %}
+        </select>
+        <button>add</button>
+    </form>
+    <form class="admin__form" method="post" id="team_a_add_point">
+        {% csrf_token %}
+        <h2>Ponto</h2>
+        <select name="team_a_add_point_player" id="team_a_add_point_player">
+            {% for player in team_a_players %}
+                <option value="{{player.player.id}}">{{player.player.number}} | {{player.player.name}}</option>
+            {% endfor %}
+        </select>
+        <button>add</button>
+    </form>
+    <h2>Penalidades</h2>
+    <form class="admin__form" method="post" id="team_a_add_faul">
+        {% csrf_token %}
+        <h2>Falta</h2>
+        <select name="team_a_add_faul_player" id="team_a_add_faul_player">
+            {% for player in team_a_players %}
+                <option value="{{player.player.id}}">{{player.player.number}} | {{player.player.name}}</option>
+            {% endfor %}
+        </select>
+        <button>add</button>
+    </form>
+    <form class="admin__form" method="post" id="team_a_add_block">
+        {% csrf_token %}
+        <h2>Bloqueio</h2>
+        <select name="team_a_add_block_player" id="team_a_add_block_player">
+            {% for player in team_a_players %}
+                <option value="{{player.player.id}}">{{player.player.number}} | {{player.player.name}}</option>
+            {% endfor %}
+        </select>
+        <button>add</button>
+    </form>
+    <form class="admin__form" method="post" id="team_a_add_erro">
+        {% csrf_token %}
+        <h2>Erro</h2>
+        <select name="team_a_add_erro_player" id="team_a_add_erro_player">
+            {% for player in team_a_players %}
+                <option value="{{player.player.id}}">{{player.player.number}} | {{player.player.name}}</option>
+            {% endfor %}
+        </select>
+        <button>add</button>
+    </form>
+    <h1>Time {{team_B.team.name}}</h1>
+    <h2>Recompensas</h2>
+    <form class="admin__form" method="post" id="team_b_add_goal">
+        <h2>Gol</h2>
+        {% csrf_token %}
+        <select name="team_b_add_goal_player" id="team_b_add_goal_player">
+            {% for player in team_b_players %}
+                <option value="{{player.player.id}}">{{player.player.number}} | {{player.player.name}}</option>
+            {% endfor %}
+        </select>
+        <button>add</button>
+    </form>
+    <form class="admin__form" method="post" id="team_b_add_point">
+        {% csrf_token %}
+        <h2>Ponto</h2>
+        <select name="team_b_add_point_player" id="team_b_add_point_player">
+            {% for player in team_b_players %}
+                <option value="{{player.player.id}}">{{player.player.number}} | {{player.player.name}}</option>
+            {% endfor %}
+        </select>
+        <button>add</button>
+    </form>
+    <h2>Penalidades</h2>
+    <form class="admin__form" method="post" id="team_b_add_faul">
+        {% csrf_token %}
+        <h2>Falta</h2>
+        <select name="team_b_add_faul_player" id="team_b_add_faul_player">
+            {% for player in team_b_players %}
+                <option value="{{player.player.id}}">{{player.player.number}} | {{player.player.name}}</option>
+            {% endfor %}
+        </select>
+        <button>add</button>
+    </form>
+    <form class="admin__form" method="post" id="team_b_add_block">
+        {% csrf_token %}
+        <h2>Bloqueio</h2>
+        <select name="team_b_add_block_player" id="team_b_add_block_player">
+            {% for player in team_b_players %}
+                <option value="{{player.player.id}}">{{player.player.number}} | {{player.player.name}}</option>
+            {% endfor %}
+        </select>
+        <button>add</button>
+    </form>
+    <form class="admin__form" method="post" id="team_b_add_erro">
+        {% csrf_token %}
+        <h2>Erro</h2>
+        <select name="team_b_add_erro_player" id="team_b_add_erro_player">
+            {% for player in team_b_players %}
+                <option value="{{player.player.id}}">{{player.player.number}} | {{player.player.name}}</option>
+            {% endfor %}
+        </select>
+        <button>add</button>
+    </form>
+
+    <script src="{% static 'js/connection_admin.js' %}"></script>
+</div>
+{% endblock content %}
