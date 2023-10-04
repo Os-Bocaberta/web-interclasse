@@ -246,16 +246,16 @@ def list_volleyball(request):
     ongoing_volleyball_sets = VolleySets.objects.all().filter(status=1)
 
     if ongoing_volleyball_sets:
-        pass
+        ongoing_match = Match.objects.all().filter(modality=1).filter(volley_set=ongoing_volleyball_sets[0])
+
+        if(ongoing_match):
+            team_match_info = TeamMatchInfo.objects.all().filter(match=ongoing_match[0].id).select_related('team')
+
+        else:
+            ongoing_match = [""]
+            team_match_info = ["", ""]
     else:
         ongoing_volleyball_sets = ['']
-
-    ongoing_match = Match.objects.all().filter(modality=1).filter(volley_set=ongoing_volleyball_sets[0])
-    
-    if(ongoing_match):
-        team_match_info = TeamMatchInfo.objects.all().filter(match=ongoing_match[0].id).select_related('team')
-
-    else:
         ongoing_match = [""]
         team_match_info = ["", ""]
 
