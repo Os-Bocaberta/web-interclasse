@@ -5,7 +5,7 @@ from .models import Teams, Players, PlayerModality, VolleySets, Match, TeamMatch
 # Create your views here.
 
 def index(request):
-    return redirect('/futsal/games/')
+    return redirect('/volleyball/games/')
 
 def game(request, id):
     print(request.get_full_path())
@@ -244,6 +244,11 @@ def list_futsal(request):
 
 def list_volleyball(request):
     ongoing_volleyball_sets = VolleySets.objects.all().filter(status=1)
+
+    if ongoing_volleyball_sets:
+        pass
+    else:
+        ongoing_volleyball_sets = ['']
 
     ongoing_match = Match.objects.all().filter(modality=1).filter(volley_set=ongoing_volleyball_sets[0])
     
