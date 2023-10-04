@@ -323,8 +323,8 @@ def volley_sets_review(request, id):
     for i in next_matchs:
         team_match_into_temp = TeamMatchInfo.objects.all().filter(match=i.id).select_related("team")
         if team_match_into_temp:
-            team_a_score_temp = Rewards.objects.all().filter(team_match=team_match_into_temp[0].id).count() + Penalties.objects.all().filter(team_match=team_match_info[1].id).count()
-            team_b_score_temp = Rewards.objects.all().filter(team_match=team_match_into_temp[1].id).count() + Penalties.objects.all().filter(team_match=team_match_info[0].id).count()
+            team_a_score_temp = Rewards.objects.all().filter(team_match=team_match_into_temp[0].id).count() + Penalties.objects.all().filter(team_match=team_match_into_temp[1].id).count()
+            team_b_score_temp = Rewards.objects.all().filter(team_match=team_match_into_temp[1].id).count() + Penalties.objects.all().filter(team_match=team_match_into_temp[0].id).count()
         temp_match = [i, list(team_match_into_temp), team_a_score_temp, team_b_score_temp]
         next_matchs_data.append(temp_match)
 
@@ -334,8 +334,8 @@ def volley_sets_review(request, id):
     for i in past_matchs:
         team_match_into_temp = TeamMatchInfo.objects.all().filter(match=i.id).select_related("team")
         if team_match_into_temp:
-            team_a_score_temp = Rewards.objects.all().filter(team_match=team_match_into_temp[0].id).count() + Penalties.objects.all().filter(team_match=team_match_info[1].id).count()
-            team_b_score_temp = Rewards.objects.all().filter(team_match=team_match_into_temp[1].id).count() + Penalties.objects.all().filter(team_match=team_match_info[0].id).count()
+            team_a_score_temp = Rewards.objects.all().filter(team_match=team_match_into_temp[0].id).count() + Penalties.objects.all().filter(team_match=team_match_into_temp[1].id).count()
+            team_b_score_temp = Rewards.objects.all().filter(team_match=team_match_into_temp[1].id).count() + Penalties.objects.all().filter(team_match=team_match_into_temp[0].id).count()
         temp_match = [i, list(team_match_into_temp), team_a_score_temp, team_b_score_temp]
         past_matchs_data.append(temp_match)
 
