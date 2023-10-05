@@ -1,7 +1,7 @@
 let team_a_score = document.querySelector('#team-a-score')
 let team_b_score = document.querySelector('#team-b-score')
 
-const socket = new WebSocket(`ws://${window.location.host}/ws/football/`)
+const socket = new WebSocket(`wss://${window.location.host}/ws/football/`)
 
 socket.onmessage = function(e) {
     //console.log('Server:' + e.data)
