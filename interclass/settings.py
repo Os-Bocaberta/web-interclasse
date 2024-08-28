@@ -92,7 +92,7 @@ ASGI_APPLICATION = 'interclass.asgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-if (os.getenv("DBTYPE") == "MySQL"):
+if (os.getenv("DBTYPE") == "MySQL" or os.getenv("DBTYPE") == "mysql"):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -105,7 +105,7 @@ if (os.getenv("DBTYPE") == "MySQL"):
         }
     }
 
-elif (os.getenv("DBTYPE") == "SQLite3"):
+elif (os.getenv("DBTYPE") == "SQLite3" or os.getenv("DBTYPE") == "sqlite3"):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
