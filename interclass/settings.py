@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4x58@aww#0uk$m_dw!i5xa9wmziv6o#&c$)80q6^8-awu$w$cz'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('HOST')
 
 
 # Application definition
@@ -92,12 +92,26 @@ ASGI_APPLICATION = 'interclass.asgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if (os.getenv("DBTYPE") == "MySQL"):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv("DBNAME"),
+            'USER': os.getenv("DBUSER"),
+            'PASSWORD': os.getenv("DBPASSWORD"),
+            # Or an IP Address that your DB is hosted on
+            'HOST': os.getenv("DBHOST"),
+            'PORT': os.getenv("DBPORT"),
+        }
     }
-}
+
+elif (os.getenv("DBTYPE") == "SQLite3"):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR / 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -135,15 +149,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/')
-]
-STATICFILES_ROOT = [
-    os.path.join(BASE_DIR, 'static/')
-]
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+if (os.getenv("ENVIRONMENT") == "DEV"):
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static/')
+    ]
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+elif (os.getenv("ENVIRONMENT") == 'PROD'):
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static/')
+    ]
+    MEDIA_ROOT = '/var/www/html/jiifs/media/'
+    STATIC_ROOT = '/var/www/html/jiifs/static'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
