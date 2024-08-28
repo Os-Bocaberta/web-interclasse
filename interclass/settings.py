@@ -165,6 +165,8 @@ elif (os.getenv("ENVIRONMENT") == 'PROD'):
     STATIC_ROOT = '/var/www/html/jiifs/static'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+CSRF_COOKIE_SECURE = False
+CSRF_TRUSTED_ORIGINS = os.getenv('HOST')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
