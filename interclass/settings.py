@@ -50,7 +50,8 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('127.0.0.1', 6379)]
+            'hosts': [('127.0.0.1', 6379)],
+            "symmetric_encryption_keys": [os.getnv('REDIS_SECRET_KEY')]
         }
     }
 }
@@ -151,13 +152,13 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 
-if (os.getenv("ENVIRONMENT") == "DEV"):
+if (os.getenv("ENVIRONMENT") == 'DEV' or os.getenv("ENVIRONMENT") == 'dev'):
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static/')
     ]
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-elif (os.getenv("ENVIRONMENT") == 'PROD'):
+elif (os.getenv("ENVIRONMENT") == 'PROD' or os.getenv("ENVIRONMENT") == 'prod'):
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static/')
     ]
@@ -166,7 +167,7 @@ elif (os.getenv("ENVIRONMENT") == 'PROD'):
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 CSRF_COOKIE_SECURE = False
-CSRF_TRUSTED_ORIGINS = os.getenv('HOST')
+CSRF_TRUSTED_ORIGINS = ['http://'+os.getenv('HOST'), 'https://'+os.getenv('HOST')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
