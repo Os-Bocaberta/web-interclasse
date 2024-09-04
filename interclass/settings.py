@@ -151,13 +151,13 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 
-if (os.getenv("ENVIRONMENT") == "DEV"):
+if (os.getenv("ENVIRONMENT") == 'DEV' or os.getenv("ENVIRONMENT") == 'dev'):
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static/')
     ]
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-elif (os.getenv("ENVIRONMENT") == 'PROD'):
+elif (os.getenv("ENVIRONMENT") == 'PROD' or os.getenv("ENVIRONMENT") == 'prod'):
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static/')
     ]
